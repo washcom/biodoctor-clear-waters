@@ -50,11 +50,11 @@ const Contact = () => {
         </div>
 
         <div className="grid lg:grid-cols-2 gap-12 max-w-6xl mx-auto">
-          <div className="space-y-8">
+          <div className="space-y-8 animate-fade-in">
             <div>
               <h3 className="text-2xl font-semibold mb-6">Contact Information</h3>
               <div className="space-y-4">
-                <div className="flex items-start gap-4">
+                <div className="flex items-start gap-4 hover:translate-x-2 transition-transform duration-300">
                   <div className="w-10 h-10 rounded-full bg-primary flex items-center justify-center flex-shrink-0">
                     <Phone className="h-5 w-5 text-primary-foreground" />
                   </div>
@@ -63,7 +63,7 @@ const Contact = () => {
                     <p className="text-muted-foreground">+254 700 000 000</p>
                   </div>
                 </div>
-                <div className="flex items-start gap-4">
+                <div className="flex items-start gap-4 hover:translate-x-2 transition-transform duration-300">
                   <div className="w-10 h-10 rounded-full bg-primary flex items-center justify-center flex-shrink-0">
                     <Mail className="h-5 w-5 text-primary-foreground" />
                   </div>
@@ -72,7 +72,7 @@ const Contact = () => {
                     <p className="text-muted-foreground">info@biodoctor.co.ke</p>
                   </div>
                 </div>
-                <div className="flex items-start gap-4">
+                <div className="flex items-start gap-4 hover:translate-x-2 transition-transform duration-300">
                   <div className="w-10 h-10 rounded-full bg-primary flex items-center justify-center flex-shrink-0">
                     <MapPin className="h-5 w-5 text-primary-foreground" />
                   </div>
@@ -92,7 +92,7 @@ const Contact = () => {
             </div>
           </div>
 
-          <div className="bg-card p-8 rounded-lg shadow-soft">
+          <div className="bg-card p-8 rounded-lg shadow-soft animate-fade-in" style={{ animationDelay: '0.2s' }}>
             <form onSubmit={handleSubmit} className="space-y-6">
               <div className="space-y-2">
                 <Label htmlFor="name">Full Name *</Label>

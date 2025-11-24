@@ -50,11 +50,11 @@ const WhyChoose = () => {
           {reasons.map((reason, index) => (
             <div 
               key={index}
-              className="flex gap-4 p-6 rounded-lg bg-background shadow-soft hover:shadow-medium transition-all duration-300 animate-fade-in"
+              className="flex gap-4 p-6 rounded-lg bg-background shadow-soft hover:shadow-medium transition-all duration-300 animate-fade-in hover:-translate-y-1 group"
               style={{ animationDelay: `${index * 0.05}s` }}
             >
               <div className="flex-shrink-0">
-                <div className="w-12 h-12 rounded-full bg-primary flex items-center justify-center">
+                <div className="w-12 h-12 rounded-full bg-primary flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
                   <reason.icon className="h-6 w-6 text-primary-foreground" />
                 </div>
               </div>

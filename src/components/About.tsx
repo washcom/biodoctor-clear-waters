@@ -36,10 +36,10 @@ const About = () => {
           {highlights.map((item, index) => (
             <div 
               key={index}
-              className="text-center p-6 rounded-lg bg-secondary shadow-soft hover:shadow-medium transition-shadow animate-fade-in"
+              className="text-center p-6 rounded-lg bg-secondary shadow-soft hover:shadow-medium transition-all duration-300 animate-fade-in hover:-translate-y-2 group"
               style={{ animationDelay: `${index * 0.1}s` }}
             >
-              <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-primary mb-4">
+              <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-primary mb-4 group-hover:scale-110 transition-transform duration-300">
                 <item.icon className="h-8 w-8 text-primary-foreground" />
               </div>
               <h3 className="text-xl font-semibold mb-2">{item.title}</h3>

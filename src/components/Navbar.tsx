@@ -46,9 +46,17 @@ const Navbar = () => {
           {/* Logo */}
           <button
             onClick={() => scrollToSection("#")}
-            className="text-xl md:text-2xl font-bold text-primary hover:opacity-80 transition-opacity"
+            className="flex items-center gap-3 hover:opacity-80 transition-opacity"
           >
-            Biodoctor Solutions
+            <div className="w-10 h-10 md:w-12 md:h-12 bg-primary rounded-lg flex items-center justify-center flex-shrink-0">
+              <span className="text-primary-foreground font-bold text-lg md:text-xl">B</span>
+            </div>
+            <div className="hidden sm:block">
+              <span className="text-lg md:text-xl font-bold text-primary block leading-tight">
+                Biodoctor Solutions
+              </span>
+              <span className="text-xs text-muted-foreground">Sewer & Sanitation Experts</span>
+            </div>
           </button>
 
           {/* Desktop Navigation */}

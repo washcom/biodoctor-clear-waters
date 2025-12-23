@@ -1,5 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
+import { Star, BadgeCheck } from "lucide-react";
 import project1 from "@/assets/project-1.jpg";
 import project2 from "@/assets/project-2.jpg";
 import project3 from "@/assets/noblegate.jpeg";
@@ -13,81 +14,109 @@ import project10 from "@/assets/saintjohnsmalaa.jpeg";
 
 const Portfolio = () => {
   const projects = [
-    { image: project1, title: "Residential Biodigester Installation", location: "Karen, Nairobi", description: "Complete biodigester system for 5-bedroom home" },
-    { image: project2, title: "Commercial Sewer Design", location: "Westlands, Nairobi", description: "Comprehensive sewer system for office complex" },
-    { image: project3, title: "Noblegate", location: "Nairobi", description: "High-capacity grease trap installation" },
-    { image: project4, title: "Kileleshwa", location: "Ngong, Nairobi", description: "Eco-friendly septic system for 500 students" },
-    { image: project5,title: "Hotel Sanitation Upgrade", location: "Mombasa", description: "Modern wastewater management system for hotel" },
-    { image: project6,title: "Kmtc Bungoma", location: "Bungoma", description: "Large-scale sewer network for factory" },
-    { image: project7,title: "Saint mercy", location: "Kericho", description: "Biodigester system serving local community" },
-    { image: project8,title: "M-GAS kibra", location: "Nairobi", description: "Safe and compliant waste management system" },
-    { image: project9,title: "Rocky-Resort", location: "Ruiru", description: "Efficient sewer system for 200 residents" },
-    { image: project10,title: "saint johns malaa", location: "Nanyuki", description: "Biodigester system for farm waste" },
-    { image: project2,title: "Shopping Mall Sanitation", location: "Thika", description: "High-capacity wastewater solution" },
-    { image: project1,title: "Office Complex Grease Trap", location: "Kitengela", description: "Preventive grease trap installation" },
+    { image: project1, title: "Residential Biodigester Installation", location: "Karen, Nairobi", description: "Complete biodigester system for 5-bedroom home", verified: true },
+    { image: project2, title: "Commercial Sewer Design", location: "Westlands, Nairobi", description: "Comprehensive sewer system for office complex", verified: true },
+    { image: project3, title: "Noblegate", location: "Nairobi", description: "High-capacity grease trap installation", verified: true },
+    { image: project4, title: "Kileleshwa", location: "Ngong, Nairobi", description: "Eco-friendly septic system for 500 students", verified: true },
+    { image: project5, title: "Hotel Sanitation Upgrade", location: "Mombasa", description: "Modern wastewater management system for hotel", verified: true },
+    { image: project6, title: "KMTC Bungoma", location: "Bungoma", description: "Large-scale sewer network for factory", verified: true },
+    { image: project7, title: "Saint Mercy", location: "Kericho", description: "Biodigester system serving local community", verified: true },
+    { image: project8, title: "M-GAS Kibra", location: "Nairobi", description: "Safe and compliant waste management system", verified: true },
+    { image: project9, title: "Rocky Resort", location: "Ruiru", description: "Efficient sewer system for 200 residents", verified: true },
+    { image: project10, title: "Saint Johns Malaa", location: "Nanyuki", description: "Biodigester system for farm waste", verified: true },
   ];
 
-  // Motion variants for cards
   const cardVariants = {
-    offscreen: { opacity: 0, y: 50, scale: 0.95 },
-    onscreen: {
+    hidden: { opacity: 0, y: 40, scale: 0.95 },
+    visible: {
       opacity: 1,
       y: 0,
       scale: 1,
-      transition: { type: "spring", bounce: 0.2, duration: 0.6 }
-    }
+      transition: { duration: 0.5, ease: "easeOut" },
+    },
   };
 
   return (
-    <section id="portfolio" className="section-padding bg-background">
-      <div className="container-custom">
+    <section id="portfolio" className="py-24 bg-background">
+      <div className="max-w-7xl mx-auto px-6">
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-center mb-12"
+          className="text-center mb-16"
         >
-          <h2 className="text-3xl md:text-4xl font-bold text-primary mb-4 font-poppins">
+          <h2 className="text-4xl md:text-5xl font-extrabold text-foreground mb-4">
             Recent Projects
           </h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto font-inter">
-            View our portfolio of successfully completed installations and designs
+          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+            A showcase of sustainable sanitation and wastewater solutions delivered across Kenya
           </p>
         </motion.div>
 
-        {/* Projects Grid */}
-        <div className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+        {/* Grid */}
+        <div className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-10">
           {projects.map((project, index) => (
-            <motion.div
+            <motion.article
               key={index}
-              initial="offscreen"
-              whileInView="onscreen"
-              viewport={{ once: true, amount: 0.3 }}
               variants={cardVariants}
-              transition={{ delay: index * 0.1 }}
-              className="group rounded-lg shadow-soft overflow-hidden"
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+              transition={{ delay: index * 0.05 }}
+              whileHover={{ y: -8 }}
+              className="group relative rounded-3xl overflow-hidden bg-card border border-border/50 shadow-lg hover:shadow-2xl transition-all duration-500 flex flex-col"
             >
-              <motion.div
-                whileHover={{ scale: 1.05 }}
-                transition={{ type: "spring", stiffness: 300 }}
-                className="relative overflow-hidden aspect-[4/3] rounded-t-lg"
-              >
-                {project.image && (
-                  <img
-                    src={project.image}
-                    alt={project.title}
-                    className="w-full h-full object-cover transition-transform duration-500"
-                  />
-                )}
-                <div className="absolute inset-0 bg-gradient-to-t from-primary/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-              </motion.div>
-              <div className="p-6 bg-card rounded-b-lg">
-                <h3 className="text-xl font-semibold mb-2">{project.title}</h3>
-                <p className="text-sm text-primary font-medium mb-2">{project.location}</p>
-                <p className="text-muted-foreground">{project.description}</p>
+              {/* Image */}
+              <div className="relative aspect-[4/3] overflow-hidden">
+                <img
+                  src={project.image}
+                  alt={project.title}
+                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 ease-out"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent opacity-80" />
+
+                {/* Location */}
+                <div className="absolute top-4 left-4 bg-white/90 backdrop-blur-md text-primary text-xs font-semibold px-4 py-1.5 rounded-full shadow-md">
+                  {project.location}
+                </div>
               </div>
-            </motion.div>
+
+              {/* Content */}
+              <div className="p-6 flex-1 flex flex-col justify-between">
+                <div>
+                  <h3 className="text-lg font-bold leading-snug tracking-tight text-foreground">
+                    {project.title}
+                  </h3>
+
+                  {/* Star Rating - Always 5 Stars */}
+                  <div className="flex items-center gap-1 mt-2">
+                    {[...Array(5)].map((_, i) => (
+                      <Star key={i} className="w-4 h-4 fill-yellow-400 text-yellow-400" />
+                    ))}
+                  </div>
+
+                  <p className="text-sm text-muted-foreground leading-relaxed line-clamp-3 mt-2">
+                    {project.description}
+                  </p>
+                </div>
+
+                {/* Verified Badge at Footer Right */}
+                {project.verified && (
+                  <div className="mt-4 flex justify-end">
+                    <span className="flex items-center gap-1 text-primary bg-primary/10 px-2 py-0.5 rounded-full text-xs font-semibold shadow-md">
+                      <BadgeCheck className="w-4 h-4" />
+                      Verified
+                    </span>
+                  </div>
+                )}
+              </div>
+
+              {/* Hover Glow */}
+              <div className="absolute inset-0 pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-transparent to-primary/10" />
+              </div>
+            </motion.article>
           ))}
         </div>
       </div>

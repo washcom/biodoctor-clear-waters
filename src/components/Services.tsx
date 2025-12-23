@@ -1,5 +1,5 @@
 import React from "react";
-import { Droplet, PenTool, Wrench, Home, Users, Building, Layers } from "lucide-react";
+import { Droplet, PenTool, Wrench, Home, Users, Building, Layers, BadgeCheck } from "lucide-react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { motion } from "framer-motion";
 
@@ -41,39 +41,13 @@ const Services = () => {
   ];
 
   const products = [
-    {
-      icon: Home,
-      name: "Bs3 Conventional",
-      capacity: "1-40 users - 1.02M3",
-      description: "Can be used by 1 – 5 families of about 6 – 7 people in a block. Ideal for domestic houses, farmhouses, workshops, office block etc. The system is 1.1M in diameter."
-    },
-    {
-      icon: Users,
-      name: "Bs3 Average",
-      capacity: "1-80 users - 2.33M3",
-      description: "Can handle up to a population of 80 people. Ideal for blocks, flats, apartments, hospitals, horticultural farms, restaurants etc. The system is 1.5M in diameter."
-    },
-    {
-      icon: Building,
-      name: "Bs3 Moderate",
-      capacity: "1-150 users - 4.14M3",
-      description: "Can handle waste of up to a population of 150 people (200 traffic). Ideal for schools, factories, hotels, social halls, etc. The system is 2M in diameter."
-    },
-    {
-      icon: Layers,
-      name: "Bs3 Populous",
-      capacity: "1-400 users - 9.33M3",
-      description: "Can handle up to 400 people (600 traffic). Ideal for shopping malls, factories, hotels, hospitals, schools, etc."
-    },
-    {
-      icon: Users,
-      name: "Bs3 Mega",
-      capacity: "1-600 users - 16.58M3",
-      description: "Can handle up to 600 people (800 traffic). Ideal for shopping malls, factories, hotels, hospitals, schools, etc."
-    }
+    { icon: Home, name: "Bs3 Conventional", capacity: "1-40 users - 1.02M3", description: "Can be used by 1 – 5 families of about 6 – 7 people. Ideal for domestic houses, farmhouses, workshops, office block etc.", verified: true },
+    { icon: Users, name: "Bs3 Average", capacity: "1-80 users - 2.33M3", description: "Can handle up to 80 people. Ideal for blocks, flats, apartments, hospitals, horticultural farms, restaurants etc.", verified: true },
+    { icon: Building, name: "Bs3 Moderate", capacity: "1-150 users - 4.14M3", description: "Can handle waste of up to 150 people. Ideal for schools, factories, hotels, social halls, etc.", verified: true },
+    { icon: Layers, name: "Bs3 Populous", capacity: "1-400 users - 9.33M3", description: "Can handle up to 400 people. Ideal for shopping malls, factories, hotels, hospitals, schools, etc.", verified: true },
+    { icon: Users, name: "Bs3 Mega", capacity: "1-600 users - 16.58M3", description: "Can handle up to 600 people. Ideal for shopping malls, factories, hotels, hospitals, schools, etc.", verified: true }
   ];
 
-  // Motion Variants
   const cardVariants = {
     offscreen: { opacity: 0, y: 50 },
     onscreen: { opacity: 1, y: 0, transition: { type: "spring", bounce: 0.2, duration: 0.6 } }
@@ -89,9 +63,7 @@ const Services = () => {
           viewport={{ once: true }}
           className="text-center mb-12"
         >
-          <h2 className="text-3xl md:text-4xl font-bold text-primary mb-4">
-            Our Products & Services
-          </h2>
+          <h2 className="text-3xl md:text-4xl font-bold text-primary mb-4">Our Products & Services</h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
             Comprehensive sewer, sanitation, and biodigester solutions tailored to your specific needs.
           </p>
@@ -108,22 +80,19 @@ const Services = () => {
               variants={cardVariants}
               transition={{ delay: index * 0.2 }}
             >
-              <Card className="shadow-md border-none group hover:shadow-xl">
-                <CardHeader className="text-center">
+              <Card className="rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 border border-gray-100 overflow-hidden flex flex-col">
+                <CardHeader className="text-center pt-6">
                   <motion.div
-                    className="flex items-center justify-center w-14 h-14 mx-auto rounded-full bg-primary mb-4"
+                    className="flex items-center justify-center w-16 h-16 mx-auto rounded-full bg-gradient-to-br from-primary to-secondary mb-4 text-white shadow-lg"
                     whileHover={{ scale: 1.1 }}
-                    transition={{ type: "spring", stiffness: 300 }}
                   >
-                    <service.icon className="h-7 w-7 text-white" />
+                    <service.icon className="h-8 w-8" />
                   </motion.div>
-                  <CardTitle className="text-xl">{service.title}</CardTitle>
-                  <CardDescription className="text-base text-muted-foreground mt-1">
-                    {service.description}
-                  </CardDescription>
+                  <CardTitle className="text-xl font-semibold">{service.title}</CardTitle>
+                  <CardDescription className="text-sm text-muted-foreground mt-1">{service.description}</CardDescription>
                 </CardHeader>
                 <CardContent>
-                  <ul className="space-y-2 mt-2">
+                  <ul className="space-y-2 mt-4">
                     {service.features.map((feature, idx) => (
                       <li key={idx} className="flex items-start gap-2 text-sm text-muted-foreground">
                         <span className="text-primary mt-1">✓</span>
@@ -141,7 +110,7 @@ const Services = () => {
         <div className="max-w-6xl mx-auto">
           <h3 className="text-2xl font-bold text-primary mb-6">BIODOCTOR SEPTIC SANITATION SYSTEM (BS3)</h3>
           <p className="text-base text-muted-foreground mb-8">
-            BIODOCTOR SEPTIC SANITATION SYSTEM (BS3) is a complete onsite sewer system, handling both grey and black water. It achieves this through Biodegradation and Displacement Principles. Many countries in Europe, Latin America and India utilize this technology, which treats wastewater in an environmentally friendly manner for irrigation or safe discharge. The system is versatile and works in all types of terrain.
+            BS3 is a complete onsite sewer system, handling both grey and black water. It works with Biodegradation and Displacement Principles. This environmentally friendly technology is versatile and works in all terrains.
           </p>
 
           <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -154,20 +123,28 @@ const Services = () => {
                 variants={cardVariants}
                 transition={{ delay: index * 0.15 }}
               >
-                <Card className="border border-gray-200 shadow-md hover:shadow-xl">
-                  <CardHeader className="text-center">
+                <Card className="rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 flex flex-col border border-gray-100 overflow-hidden">
+                  <CardHeader className="text-center pt-6">
                     <motion.div
-                      className="flex items-center justify-center w-14 h-14 mx-auto rounded-full bg-primary mb-4"
+                      className="flex items-center justify-center w-16 h-16 mx-auto rounded-full bg-gradient-to-br from-primary to-secondary mb-4 text-white shadow-lg"
                       whileHover={{ scale: 1.1 }}
-                      transition={{ type: "spring", stiffness: 300 }}
                     >
-                      <product.icon className="h-7 w-7 text-white" />
+                      <product.icon className="h-8 w-8" />
                     </motion.div>
                     <CardTitle className="text-xl font-semibold">{product.name}</CardTitle>
                     <CardDescription className="text-sm text-muted-foreground">{product.capacity}</CardDescription>
                   </CardHeader>
-                  <CardContent>
+                  <CardContent className="flex flex-col justify-between flex-1">
                     <p className="text-base text-muted-foreground">{product.description}</p>
+                    {/* Verified Badge */}
+                    {product.verified && (
+                      <div className="mt-4 flex justify-end">
+                        <span className="flex items-center gap-1 text-white bg-green-500 px-3 py-1 rounded-full text-xs font-semibold shadow-md">
+                          <BadgeCheck className="w-4 h-4" />
+                          Verified
+                        </span>
+                      </div>
+                    )}
                   </CardContent>
                 </Card>
               </motion.div>
